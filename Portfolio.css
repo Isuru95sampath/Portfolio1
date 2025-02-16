@@ -58,6 +58,14 @@ section {
     min-height: 100vh;
     padding: 10rem 9% 2rem;
     background-color: var(--bg-color);
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+}
+section.active{
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
 }
 
 .home {
@@ -76,16 +84,24 @@ section {
 .homeDetails h2 {
     display: inline-block;
     font-size: 1.5rem;
-    margin-top: -rem;
+    margin-top: 1rem;
     
 }
 
-.homeDetails h2{
+.homeDetails h2 span{
     position: relative;
     display: inline-block;
     color: transparent;
-    -webkit-text-stroke: .07rem var(--main-color);
+    -webkit-text-stroke: .06rem var(--main-color);
+    animation: display-text 8s linear infinite;
+    animation-delay: calc(-2s * var(--i));    
 }
+@keyframes display-text{
+    50%,100%{
+        display: none;
+    }
+}
+
 .homeDetails h2 span::before{
     content: attr(data-text);
     position: absolute;
@@ -94,7 +110,7 @@ section {
     color: var(--main-color);
     white-space: nowrap;
     overflow: hidden;
-    animation: fill-text 4s linear infinite;
+    animation: fill-text 3s linear infinite;
 }
 @keyframes fill-text {
     10%,100%{
@@ -116,14 +132,14 @@ section {
 }
 .btn{
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     background: var(--main-color);
     border: .2rem solid var(--main-color);
     border-radius: 4rem;
     box-shadow:0 0 1.2rem var(--main-color)  ;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color:  var(--bg-color);
-    font-weight: 500;
+    font-weight: bold;
     transition: .5s;
     text-decoration: none;
 
@@ -222,8 +238,6 @@ section {
     }
 }
 
-
-
 .homeImg .imgBox .imgItem{
     position: relative;
     width: 100%;
@@ -246,3 +260,19 @@ section {
 
 }
 
+/*services headings*/
+.heading{
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+
+}
+.heading span{
+    color: var(--main-color);
+
+}
+.services-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, min-max(30rem,1fr));
+    gap: 2rem;
+}
