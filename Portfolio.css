@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 :root {
     --bg-color: #1f242d;
     --second-bg-color: #323946;
@@ -5,25 +10,27 @@
     --white-color: #ffffff;
     --disabled-color: #fff3;
 }
-
 body {
     background-color: var(--bg-color);
     color: var(--white-color);
     font-family: "Poppins", sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 95%;
+    width: 100%;
     padding: 2rem 1%;
     background: var(--bg-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .logo {
@@ -41,6 +48,8 @@ nav a {
     transition: color 0.5s;
     text-decoration: none;
 }
+
+
 
 nav a:hover,
 nav a.active {
@@ -261,36 +270,32 @@ section.active{
 }
 
 /*services headings*/
-.heading{
+.heading {
     font-size: 3.5rem;
     text-align: center;
-    margin-bottom: 0rem;
-
+    margin-bottom: 2rem;
 }
-.heading span{
+
+.heading span {
     color: var(--main-color);
-
-}
-.services-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10%;
 }
 
-.services-container .services-box{
-    padding: 3rem 2.5rem;
+.services-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between boxes */
+    gap: 2rem; /* Space between boxes */
+}
+
+.services-container .services-box {
+    flex: 1; /* Each box takes equal width */
+    padding: 2rem 2.5rem;
     background: var(--second-bg-color);
-    border: .1rem solid var(--main-color);
+    border: 0.1rem solid var(--main-color);
     border-radius: 1rem;
-    transition: 1s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Smooth transition */
     text-align: center;
-    margin-left: -15rem;
-    margin-top: 3rem;
-    
 }
+
 
 .services-container .services-box:hover{
     border-color: var(--main-color);
@@ -342,4 +347,42 @@ section.active{
 }
 .services-box p{
     font-size: 1.3rem;
+}
+
+
+/*resume part*/
+
+.resume-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+}
+.resume-box h2 {
+    font-size: 4rem;
+}
+.resume-box p {
+    font-size: 1.2rem;
+}
+.resume-box .desc {
+    margin: 2rem 0 2.5rem;
+}
+.resume-box .resume-btn {
+    width: 100%;
+    height: 4.3rem;
+    background: var(--second-bg-color);
+    border: .1rem solid var(--second-bg-color);
+    font-size: 1.3rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border-radius: .8rem;
+    cursor: pointer;
+}
+.resume-box .resume-btn.active {
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+.resume-box .heading {
+    font-size: 3.5rem;
+    text-align: left;
 }
