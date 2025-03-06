@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Portfolio.css">
 </head>
 <body>
-    <header>
+    <header class="active">
         <a href="#" class="logo">Isuru</a>
         <i class='bx bx-menu-alt-left' id="menuIcon"></i>
         <nav>
@@ -21,12 +21,24 @@
         </nav>
     </header>
 
-    <section class="home">
+    <!--bars background-->
+
+    <div class="bars-box active">
+        <div class="bar" style="--i:6"></div>
+        <div class="bar" style="--i:5"></div>
+        <div class="bar" style="--i:4"></div>
+        <div class="bar" style="--i:3"></div>
+        <div class="bar" style="--i:2"></div>
+        <div class="bar" style="--i:1"></div>
+    </div>
+    
+
+    <section class="home active">
         <div class="homeDetails">
             <h1>Isuru Sampath</h1>
             <h2>I'm a
                 <span style="--i:1;" data-text=" Developer"> Developer</span>
-                <span style="--i:2;" data-text=" UI/UX Developer "> UI/UX Designer</span>
+               <!--<span style="--i:2;" data-text="  Developer"> </span>--> 
             </h2>
             <p>Lorem ipsum dolor sit, amet consectetur tempora beatae quisquam officia.
                  Amet perspiciatis maxime assumenda ex odit quam error inventore quispariatur iste.</p>
@@ -194,7 +206,7 @@
 
                 <!--Portfolio section-->
 
-                <section class="portfolio active">
+                <section class="portfolio ">
                     <h2 class="heading">Latest <span>Project</span></h2>
                     <div class="portfolio-container">
                         
@@ -202,7 +214,23 @@
                         <div class="portfolio-box">
                             <div class="portfolio-details active">
                                 <p class="numb">01</p>
-                                <h3>Inventory Management System</h3>
+                                <h3>Hela rasa Sri Lankan Traditional web application.</h3>
+                                <p>I am developing my own website that showcases Sri Lankan traditional foods, using
+                                    JavaScript, HTML, and CSS to create an interactive and visually appealing platform.
+                                    Excited to bring this project to life and share the rich food culture of Sri Lanka! 
+                                </p>
+                                <div class="tech">
+                                    <p>HTML5, CSS, JavaScript</p>
+                                </div>
+                                <div class="live-github">
+                                    <a href="#"><i class='bx bxl-github'></i><span>Github</span></a>
+                                    <a href="#"><i class='bx bxl-linkedin-square'></i><span>LinkedIn</span></a>
+                                </div>
+                            </div>
+                
+                            <div class="portfolio-details">
+                                <p class="numb">02</p>
+                                <h3>Inventory Management System.</h3>
                                 <p>For my third-year project, we developed a web application and an Android app to 
                                     manage warehouse stock, using Firebase as the database and Dart as the framework. 
                                     My role focused on designing the web interface, developing the website, and 
@@ -216,14 +244,22 @@
                                     <a href="#"><i class='bx bxl-github'></i><span>Github</span></a>
                                     <a href="#"><i class='bx bxl-linkedin-square'></i><span>LinkedIn</span></a>
                                 </div>
-                            </div>
-                
-                            <div class="portfolio-details">
-                                <p class="numb">02</p>
+                                
                             </div>
                 
                             <div class="portfolio-details">
                                 <p class="numb">03</p>
+                                <h3>Inventory Management System Full-Stack Development.</h3>
+                                <p>This web application create using html ,css and java script 
+                                </p>
+                                <div class="tech">
+                                    <p>HTML5, CSS, JavaScript</p>
+                                </div>
+                                <div class="live-github">
+                                    <a href="#"><i class='bx bxl-github'></i><span>Github</span></a>
+                                    <a href="#"><i class='bx bxl-linkedin-square'></i><span>LinkedIn</span></a>
+                                </div></h3>
+                                
                             </div>
                 
                             <div class="portfolio-details">
@@ -236,7 +272,7 @@
                             <div class="portfolio-carousel"> <!-- Corrected spelling -->
                                 <div class="img-slide">
                                     <div class="img-item">
-                                        <img src="Images/IMG1.jpg" alt="Project Image 1">
+                                        <img src="Images/IMG4.jpg" alt="Project Image 1">
                                     </div>
                                     <div class="img-item">
                                         <img src="Images/img3.jpg" alt="Project Image 2">
@@ -257,6 +293,59 @@
                         
                     </div> <!-- End of portfolio-container -->
                 </section>
+
+                                <!--Contact section-->
+                                <div class="contact">
+                                    <div class="contect-container">
+                                        <div class="contact-box">
+                                            <h2>Let's Work Together</h2>
+                                            <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quos laboriosam excepturi repellat officiis vero dicta ut asperiores rerum aspernatur sint vel veniam reprehenderit aliquid, dolorum cumque illum officia quam!
+                                            </p>
+                                            <div class="contact-detail">
+                                                <i class='bx bxs-phone' ></i>
+                                                <div class="detail">
+                                                <p>Phone</p>
+                                                <p>078 5582829</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="contact-detail">
+                                                <i class='bx bxs-envelope' ></i>
+                                                <div class="detail">
+                                                <p>Email</p>
+                                                <p>isurusampath4391@gmail.com</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="contact-detail">
+                                                <i class='bx bxs-map' ></i>                                                <div class="detail">
+                                                <p>Address</p>
+                                                <p>25/C/4 Wewala Kanda,Wewala Horana,</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contact-box">
+                                            <form action="">
+                                                <h2 class="heading">Contact <span>Me!</span></h2>
+                                                <div class="field-box">
+                                                    <input type="text" placeholder="Full Name" required>
+                                                    <input type="email" placeholder="Email Address" required>
+                                                    <input type="text" placeholder="Phone Number" required>
+                                                    <input type="text" placeholder="Email Subject" required>
+                                                    <textarea name="" id="" placeholder="Your Message" required>
+
+                                                    </textarea>
+                                                </div>
+                                                <button type="submit" class="btn">Send Message</button>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+             
                 
                 
             
