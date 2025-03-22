@@ -5,85 +5,80 @@ document.addEventListener("DOMContentLoaded", () => {
     const imgSlide = document.querySelector(".portfolio-carousel .img-slide");
     const imgItems = document.querySelectorAll(".portfolio-carousel .img-item");
     const portfolioDetails = document.querySelectorAll(".portfolio-details");
+    const arrowRight = document.querySelector(".portfolio-box .navigation .arrow-right");
+    const arrowLeft = document.querySelector(".portfolio-box .navigation .arrow-left");
 
     let index = 0;
     let imgWidth = imgItems.length > 0 ? imgItems[0].offsetWidth : 300;
 
-    // Function to reset active states
-    const activePage = () => {
-        const barsBox = document.querySelector(".bars-box");
-        navLinks.forEach((link) => link.classList.remove("active"));
-        sections.forEach((section) => section.classList.remove("active"));
-        if (barsBox) {
-            barsBox.classList.remove("active");
-            setTimeout(() => {
-                barsBox.classList.add("active");
-            }, 900);
-        }
+    // Function to activate only the clicked section with animation
+    const activateSection = (index) => {
+        sections.forEach((section, idx) => {
+            if (idx === index) {
+                section.classList.add("active", "fade-in"); // Add animation
+            } else {
+                section.classList.remove("active", "fade-in");
+            }
+        });
     };
 
-    // Function to reset the portfolio slider
-    const resetPortfolioSlider = () => {
-        index = 0;
-        imgWidth = imgItems.length > 0 ? imgItems[0].offsetWidth : 300;
-        if (imgSlide) {
-            imgSlide.style.transform = `translateX(0px)`;
-        }
-        portfolioDetails.forEach((detail) => detail.classList.remove("active"));
-        if (portfolioDetails[index]) {
-            portfolioDetails[index].classList.add("active");
-        }
-    };
-
-    // Navbar click event for smooth scrolling
+    // Navbar click event for smooth scrolling and animation
     navLinks.forEach((link, idx) => {
         link.addEventListener("click", (event) => {
             event.preventDefault(); // Prevents default link behavior
 
             if (!link.classList.contains("active")) {
-                activePage();
+                navLinks.forEach((lnk) => lnk.classList.remove("active"));
                 link.classList.add("active");
 
-                setTimeout(() => {
-                    sections[idx].classList.add("active");
-                    resetPortfolioSlider();
-                    window.scrollTo({ top: sections[idx].offsetTop, behavior: "smooth" });
-                }, 900);
+                // Smooth scroll to section
+                window.scrollTo({ top: sections[idx].offsetTop, behavior: "smooth" });
+
+                // Activate only the targeted section with animation
+                activateSection(idx);
             }
         });
     });
+    
+
+    // Automatically detect which section is in view and update the active link
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const index = Array.from(sections).indexOf(entry.target);
+                navLinks.forEach((lnk) => lnk.classList.remove("active"));
+                navLinks[index].classList.add("active");
+                activateSection(index);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    sections.forEach((section) => observer.observe(section));
 
     // Logo click event to go back to the home section
     if (logoLink) {
         logoLink.addEventListener("click", (event) => {
             event.preventDefault(); // Prevents default link behavior
             if (!navLinks[0].classList.contains("active")) {
-                activePage();
+                navLinks.forEach((lnk) => lnk.classList.remove("active"));
                 navLinks[0].classList.add("active");
 
-                setTimeout(() => {
-                    sections[0].classList.add("active");
-                    resetPortfolioSlider();
-                    window.scrollTo({ top: sections[0].offsetTop, behavior: "smooth" });
-                }, 900);
+                window.scrollTo({ top: sections[0].offsetTop, behavior: "smooth" });
+                activateSection(0);
             }
         });
     }
 
-    // Portfolio slider controls
-    const arrowRight = document.querySelector(".portfolio-box .navigation .arrow-right");
-    const arrowLeft = document.querySelector(".portfolio-box .navigation .arrow-left");
-
+    // Portfolio slider functions
     const activePortfolio = () => {
         if (imgItems.length === 0) return;
         imgWidth = imgItems[0].offsetWidth;
         if (imgSlide) {
             imgSlide.style.transform = `translateX(${-index * imgWidth}px)`;
         }
-        portfolioDetails.forEach((detail) => detail.classList.remove("active"));
-        if (portfolioDetails[index]) {
-            portfolioDetails[index].classList.add("active");
-        }
+        portfolioDetails.forEach((detail, i) => {
+            detail.classList.toggle("active", i === index);
+        });
     };
 
     if (arrowRight) {
