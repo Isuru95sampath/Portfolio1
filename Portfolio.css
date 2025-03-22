@@ -118,7 +118,7 @@ section {
     width: 100%;
     background-color: var(--bg-color);
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 3rem 9% 2rem;
    
     
 }
@@ -146,7 +146,7 @@ section.active{
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: -5rem;
+    margin-top: rem;
     position: relative;
 }
 
@@ -600,7 +600,7 @@ section.active{
 }
 .portfolio-box .tech{
     
-    margin: 2rem 0;
+    margin: 1rem 0;
     color: var(--main-color);
     border-bottom: .1rem solid var(--main-color);
     padding-bottom: 1rem;
@@ -642,7 +642,7 @@ section.active{
 }
 
 .portfolio-box .live-github a:hover span{
-    top: -50%;
+    top: -10%;
     opacity: 1;
     transform: translateX(-50%) scale (1);
 }

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll("header nav a");
     const logoLink = document.querySelector(".logo");
+    const resumeBtns =document.querySelectorAll('.resume-btn');
     const sections = document.querySelectorAll("section");
     const imgSlide = document.querySelector(".portfolio-carousel .img-slide");
     const imgItems = document.querySelectorAll(".portfolio-carousel .img-item");
@@ -10,6 +11,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index = 0;
     let imgWidth = imgItems.length > 0 ? imgItems[0].offsetWidth : 300;
+
+
+    resumeBtns.forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+            const resumeDetailes = document.querySelectorAll('.resume-detail');
+            resumeBtns.forEach(btn =>{
+                btn.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            resumeDetailes.forEach(detail =>{
+                detail.classList.remove('active');
+            });
+
+            resumeDetailes[idx].classList.add('active');
+       });
+    });
+
 
     // Function to activate only the clicked section with animation
     const activateSection = (index) => {
