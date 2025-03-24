@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let imgWidth = imgItems.length > 0 ? imgItems[0].offsetWidth : 300;
 
 
+
+    /*menu icone*/
+
+    document.querySelector('#menu-icon').addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('active');
+    });
+
+
+    /* resume buttons*/
+
     resumeBtns.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
             const resumeDetailes = document.querySelectorAll('.resume-detail');
